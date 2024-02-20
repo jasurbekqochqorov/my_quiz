@@ -43,7 +43,7 @@ class _SubjectScreenState extends State<SubjectScreen> {
                       SubjectModel subjectModel = DataRepository.instance.allSubject[index];
                       return SubjectItem(
                           time: '14:00', subjectModel: subjectModel, onTap: () {
-                            Navigator.pushReplacement(context,MaterialPageRoute(builder: (context){
+                            Navigator.push(context,MaterialPageRoute(builder: (context){
                               return MainScreen(subjectModel: subjectModel,);
                             }));
                       });

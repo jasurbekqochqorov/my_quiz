@@ -151,7 +151,7 @@ class _MainScreenState extends State<MainScreen> {
                 BottomContainer(
                   k: widget.subjectModel.questions.length*120,
                   onTap: (){
-                    Navigator.pushReplacement(context,MaterialPageRoute(builder: (context){
+                    Navigator.push(context,MaterialPageRoute(builder: (context){
                       return QuizScreen(subjectModel:widget.subjectModel,);
                     }));
                   },

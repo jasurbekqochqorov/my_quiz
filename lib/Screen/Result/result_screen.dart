@@ -142,7 +142,7 @@ class _ResultScreenState extends State<ResultScreen>{
               SizedBox(height:30.getH(),),
               ZoomTapAnimation(
                   onTap: (){
-                    Navigator.pushReplacement(context,MaterialPageRoute(builder: (context){
+                    Navigator.push(context,MaterialPageRoute(builder: (context){
                       return ResultList(
                         answerReport: widget.answerReport,
                         subjectModel:widget.answerReport.subjectModel,

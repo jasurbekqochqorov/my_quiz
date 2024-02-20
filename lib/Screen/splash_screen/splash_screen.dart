@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
   _init()async{
     DataRepository.instance.loadSubject();
     Future.delayed(const Duration(seconds: 4),(){
-      Navigator.pushReplacement(context,MaterialPageRoute(builder: (context){
+      Navigator.push(context,MaterialPageRoute(builder: (context){
         return const SubjectScreen();
       }));
     });

@@ -189,7 +189,7 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   _navigateToResultScreen() {
-    return Navigator.pushReplacement(context,
+    return Navigator.push(context,
         MaterialPageRoute(builder: (context) {
       return ResultScreen(
         answerReport: AnswerReport(
