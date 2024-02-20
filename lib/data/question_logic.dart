@@ -60,18 +60,11 @@ class AnswerReport {
         }
       }
       falseAnswersCount=subjectModel.questions.length-trueAnswer;
-      int onlySelectedAnswersCount = 0;
-      for (int i = 0; i < subjectModel.questions.length; i++) {
-        if (selectedAnswer[i] != 0) {
-          onlySelectedAnswersCount++;
-        }
-      }
-      averageTimeForEachAnswer = spentTime ~/ onlySelectedAnswersCount;
     }
 
     totalTime = subjectModel.questions.length * 120;
 
-    truePercentage = (trueAnswer/ subjectModel.questions.length);
+    truePercentage = (trueAnswer>0)?(trueAnswer/ subjectModel.questions.length):0;
 
     totalQuestionsCount = subjectModel.questions.length;
   }

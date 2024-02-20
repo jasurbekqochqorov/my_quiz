@@ -15,9 +15,10 @@ import '../globalList/global_list.dart';
 
 
 class ResultList extends StatefulWidget {
-  const ResultList({super.key, required this.subjectModel, required this.answers});
+  const ResultList({super.key, required this.subjectModel, required this.answers, required this.answerReport});
   final SubjectModel subjectModel;
   final Map<int,int> answers;
+  final AnswerReport answerReport;
   @override
   State<ResultList> createState() => _ResultListState();
 }
@@ -38,7 +39,7 @@ class _ResultListState extends State<ResultList> {
           children: [
           GlobalAppBar(title:'Sizning Natijangiz',onPressed: (){
             Navigator.push(context,MaterialPageRoute(builder: (context){
-              return ResultScreen(answerReport: AnswerReport(subjectModel:widget.subjectModel, selectedAnswer:widget.answers, spentTime:0),);
+              return ResultScreen(answerReport: AnswerReport(subjectModel:widget.subjectModel, selectedAnswer:widget.answers, spentTime:widget.answerReport.spentTime),);
             }));
           },),
             SizedBox(height: 20.getH(),),
@@ -57,56 +58,54 @@ class _ResultListState extends State<ResultList> {
                   ),),
                 ),
                 SizedBox(height:10.getH(),),
-                Expanded(
-                  child: Column(children: [
-                    ...List.generate(widget.subjectModel.questions.length, (index){
-                      return Padding(
-                        padding:EdgeInsets.symmetric(horizontal: 32.w),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("Savol: ${index+1}/${widget.subjectModel.questions.length}",style: AppTextStyle.interSemiBold.copyWith(
-                                color: AppColors.c_F2F2F2,fontSize: 20.sp
+                Column(children: [
+                  ...List.generate(widget.subjectModel.questions.length, (index){
+                    return Padding(
+                      padding:EdgeInsets.symmetric(horizontal: 32.w),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Savol: ${index+1}/${widget.subjectModel.questions.length}",style: AppTextStyle.interSemiBold.copyWith(
+                              color: AppColors.c_F2F2F2,fontSize: 20.sp
+                          ),),
+                          SizedBox(height: 12.getH(),),
+                          Text(widget.subjectModel.questions[index].questionTest,
+                            style: AppTextStyle.interSemiBold.copyWith(
+                              color: AppColors.c_F2F2F2,fontSize: 17.sp,
                             ),),
-                            SizedBox(height: 12.getH(),),
-                            Text(widget.subjectModel.questions[index].questionTest,
-                              style: AppTextStyle.interSemiBold.copyWith(
-                                color: AppColors.c_F2F2F2,fontSize: 17.sp,
-                              ),),
-                            SizedBox(height: 14.getH(),),
-                            Questions(
-                              isTrue2: widget.subjectModel.questions[index].variant1==widget.subjectModel.questions[index].trueAnswer,
-                              isActive: (list[index]==widget.subjectModel.questions[index].variant1),
-                              questionVariant:"A. ",
-                              variant:widget.subjectModel.questions[index].variant1,
-                              isTrue:(list[index]==widget.subjectModel.questions[index].variant1 && list[index]==widget.subjectModel.questions[index].trueAnswer),
-                            ),
-                            Questions(
-                              isTrue2: widget.subjectModel.questions[index].variant2==widget.subjectModel.questions[index].trueAnswer,
-                              isActive:(list[index]==widget.subjectModel.questions[index].variant2),
-                              questionVariant:"B. ",
-                              variant:widget.subjectModel.questions[index].variant2,
-                              isTrue:(list[index]==widget.subjectModel.questions[index].variant2 && list[index]==widget.subjectModel.questions[index].trueAnswer),
-                            ),
-                            Questions(
-                              isTrue2:widget.subjectModel.questions[index].variant3==widget.subjectModel.questions[index].trueAnswer,
-                              isActive: (list[index]==widget.subjectModel.questions[index].variant3),
-                              questionVariant:"C. ",
-                              variant:widget.subjectModel.questions[index].variant3,
-                              isTrue:(list[index]==widget.subjectModel.questions[index].variant3 && list[index]==widget.subjectModel.questions[index].trueAnswer),
-                            ),
-                            Questions(
-                              isTrue2:widget.subjectModel.questions[index].variant4==widget.subjectModel.questions[index].trueAnswer,
-                              isActive: (list[index]==widget.subjectModel.questions[index].variant4),
-                              questionVariant:"D. ",
-                              variant:widget.subjectModel.questions[index].variant4,
-                              isTrue:(list[index]==widget.subjectModel.questions[index].variant4 && list[index]==widget.subjectModel.questions[index].trueAnswer),
-                            )
-                          ],),
-                      );
-                    })
-                  ],),
-                ),
+                          SizedBox(height: 14.getH(),),
+                          Questions(
+                            isTrue2: widget.subjectModel.questions[index].variant1==widget.subjectModel.questions[index].trueAnswer,
+                            isActive: (list[index]==widget.subjectModel.questions[index].variant1),
+                            questionVariant:"A. ",
+                            variant:widget.subjectModel.questions[index].variant1,
+                            isTrue:(list[index]==widget.subjectModel.questions[index].variant1 && list[index]==widget.subjectModel.questions[index].trueAnswer),
+                          ),
+                          Questions(
+                            isTrue2: widget.subjectModel.questions[index].variant2==widget.subjectModel.questions[index].trueAnswer,
+                            isActive:(list[index]==widget.subjectModel.questions[index].variant2),
+                            questionVariant:"B. ",
+                            variant:widget.subjectModel.questions[index].variant2,
+                            isTrue:(list[index]==widget.subjectModel.questions[index].variant2 && list[index]==widget.subjectModel.questions[index].trueAnswer),
+                          ),
+                          Questions(
+                            isTrue2:widget.subjectModel.questions[index].variant3==widget.subjectModel.questions[index].trueAnswer,
+                            isActive: (list[index]==widget.subjectModel.questions[index].variant3),
+                            questionVariant:"C. ",
+                            variant:widget.subjectModel.questions[index].variant3,
+                            isTrue:(list[index]==widget.subjectModel.questions[index].variant3 && list[index]==widget.subjectModel.questions[index].trueAnswer),
+                          ),
+                          Questions(
+                            isTrue2:widget.subjectModel.questions[index].variant4==widget.subjectModel.questions[index].trueAnswer,
+                            isActive: (list[index]==widget.subjectModel.questions[index].variant4),
+                            questionVariant:"D. ",
+                            variant:widget.subjectModel.questions[index].variant4,
+                            isTrue:(list[index]==widget.subjectModel.questions[index].variant4 && list[index]==widget.subjectModel.questions[index].trueAnswer),
+                          )
+                        ],),
+                    );
+                  })
+                ],),
               ],),
             )
           ],

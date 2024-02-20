@@ -97,7 +97,7 @@ class _ResultScreenState extends State<ResultScreen>{
                   ),
                   SizedBox(width: 23.w,),
                   Expanded(
-                    child: Text('Tabriklaymiz,  Sizning Natijangiz:${(widget.answerReport.truePercentage*100).toStringAsFixed(1)}%',style: AppTextStyle.interSemiBold.copyWith(
+                    child: Text('Tabriklaymiz, Sizning Natijangiz:${(widget.answerReport.truePercentage*100)}%',style: AppTextStyle.interSemiBold.copyWith(
                       fontSize: 16.sp,color:AppColors.c_F2F2F2,
                     ),),
                   )
@@ -144,6 +144,7 @@ class _ResultScreenState extends State<ResultScreen>{
                   onTap: (){
                     Navigator.pushReplacement(context,MaterialPageRoute(builder: (context){
                       return ResultList(
+                        answerReport: widget.answerReport,
                         subjectModel:widget.answerReport.subjectModel,
                         answers: widget.answerReport.selectedAnswer,
                       );

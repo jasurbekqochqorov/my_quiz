@@ -99,93 +99,89 @@ class _QuizScreenState extends State<QuizScreen> {
                       topRight: Radius.circular(40.r),
                       topLeft: Radius.circular(40.r),
                     )),
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: ListView(
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Savol: ${activeIndex + 1}/${widget.subjectModel.questions.length}",
-                                style: AppTextStyle.interSemiBold.copyWith(
-                                    color: AppColors.c_F2F2F2, fontSize: 20.sp),
-                              ),
-                              SizedBox(
-                                height: 12.getH(),
-                              ),
-                              Text(
-                                widget.subjectModel.questions[activeIndex]
-                                    .questionTest,
-                                style: AppTextStyle.interSemiBold.copyWith(
-                                  color: AppColors.c_F2F2F2,
-                                  fontSize: 17.sp,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 14.getH(),
-                              ),
-                              QuestionsButton(
-                                  onTap: () {
-                                    activeVariant = 1;
-                                    setState(() {});
-                                  },
-                                  isActive: activeVariant == 1,
-                                  questionVariant: "A. ",
-                                  variant: widget.subjectModel
-                                      .questions[activeIndex].variant1),
-                              QuestionsButton(
-                                  onTap: () {
-                                    activeVariant = 2;
-                                    setState(() {});
-                                  },
-                                  isActive: activeVariant == 2,
-                                  questionVariant: "B. ",
-                                  variant: widget.subjectModel
-                                      .questions[activeIndex].variant2),
-                              QuestionsButton(
-                                  onTap: () {
-                                    activeVariant = 3;
-                                    setState(() {});
-                                  },
-                                  isActive: activeVariant == 3,
-                                  questionVariant: "C. ",
-                                  variant: widget.subjectModel
-                                      .questions[activeIndex].variant3),
-                              QuestionsButton(
-                                  onTap: () {
-                                    activeVariant = 4;
-                                    setState(() {});
-                                  },
-                                  isActive: activeVariant == 4,
-                                  questionVariant: "D. ",
-                                  variant: widget.subjectModel
-                                      .questions[activeIndex].variant4)
-                            ],
-                          )
-                        ],
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Savol: ${activeIndex + 1}/${widget.subjectModel.questions.length}",
+                        style: AppTextStyle.interSemiBold.copyWith(
+                            color: AppColors.c_F2F2F2, fontSize: 20.sp),
                       ),
-                    ),
-                    ButtonDown(
-                      onPrevious: () {
-                        activeIndex--;
-                        activeVariant = selectedAnswer[activeIndex]!;
-                        setState(() {});
-                      },
-                      onNext: () {
-                        selectedAnswer[activeIndex] = activeVariant;
-                        activeIndex++;
-                        activeVariant = selectedAnswer[activeIndex]!;
-                        setState(() {});
-                      },
-                      subjectModel: widget.subjectModel,
-                      activeIndex: activeIndex,
-                    )
-                  ],
+                      SizedBox(
+                        height: 12.getH(),
+                      ),
+                      Text(
+                        widget.subjectModel.questions[activeIndex]
+                            .questionTest,
+                        style: AppTextStyle.interSemiBold.copyWith(
+                          color: AppColors.c_F2F2F2,
+                          fontSize: 17.sp,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 14.getH(),
+                      ),
+                      QuestionsButton(
+                          onTap: () {
+                            activeVariant = 1;
+                            setState(() {});
+                          },
+                          isActive: activeVariant == 1,
+                          questionVariant: "A. ",
+                          variant: widget.subjectModel
+                              .questions[activeIndex].variant1),
+                      QuestionsButton(
+                          onTap: () {
+                            activeVariant = 2;
+                            setState(() {});
+                          },
+                          isActive: activeVariant == 2,
+                          questionVariant: "B. ",
+                          variant: widget.subjectModel
+                              .questions[activeIndex].variant2),
+                      QuestionsButton(
+                          onTap: () {
+                            activeVariant = 3;
+                            setState(() {});
+                          },
+                          isActive: activeVariant == 3,
+                          questionVariant: "C. ",
+                          variant: widget.subjectModel
+                              .questions[activeIndex].variant3),
+                      QuestionsButton(
+                          onTap: () {
+                            activeVariant = 4;
+                            setState(() {});
+                          },
+                          isActive: activeVariant == 4,
+                          questionVariant: "D. ",
+                          variant: widget.subjectModel
+                              .questions[activeIndex].variant4),
+                    ],
+                  ),
                 ),
               ),
             ),
+            Container(
+              color:AppColors.c_162023,
+              padding:EdgeInsets.symmetric(horizontal:32.w),
+              child: ButtonDown(
+                onPrevious: () {
+                  activeIndex--;
+                  activeVariant = selectedAnswer[activeIndex]!;
+                  setState(() {});
+                },
+                onNext: () {
+                  selectedAnswer[activeIndex] = activeVariant;
+                  activeIndex++;
+                  activeVariant = selectedAnswer[activeIndex]!;
+                  setState(() {});
+                },
+                subjectModel: widget.subjectModel,
+                activeIndex: activeIndex,
+              ),
+            )
           ],
         ),
       ),

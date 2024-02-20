@@ -45,109 +45,107 @@ class _MainScreenState extends State<MainScreen> {
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(40.r),
                             topRight: Radius.circular(40.r))),
-                    child: Expanded(
-                      child: SingleChildScrollView(
-                        physics:const BouncingScrollPhysics(),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Bir nechta savollarga javob berish orqali o'z bilimingizni sinab ko'ring.",
-                              textAlign: TextAlign.center,
-                              style: AppTextStyle.interRegular.copyWith(
-                                  color: AppColors.c_F2F2F2, fontSize: 18.sp),
+                    child: SingleChildScrollView(
+                      physics:const BouncingScrollPhysics(),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Bir nechta savollarga javob berish orqali o'z bilimingizni sinab ko'ring.",
+                            textAlign: TextAlign.center,
+                            style: AppTextStyle.interRegular.copyWith(
+                                color: AppColors.c_F2F2F2, fontSize: 18.sp),
+                          ),
+                          SizedBox(
+                            height: 15.getH(),
+                          ),
+                          Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16.r),
+                              border:
+                                  Border.all(width: 2.w, color:Colors.lightBlueAccent),
                             ),
-                            SizedBox(
-                              height: 15.getH(),
-                            ),
-                            Container(
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16.r),
-                                border:
-                                    Border.all(width: 2.w, color:Colors.lightBlueAccent),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  ClipRRect(
-                                      borderRadius: BorderRadius.circular(16.r),
-                                      child:(widget.subjectModel.subjectName=='Matematika')?Image.asset(AppImages.picture):Image.asset(AppImages.picture2)),
-                                  SizedBox(
-                                    height: 10.getH(),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ClipRRect(
+                                    borderRadius: BorderRadius.circular(16.r),
+                                    child:(widget.subjectModel.subjectName=='Matematika')?Image.asset(AppImages.picture):Image.asset(AppImages.picture2)),
+                                SizedBox(
+                                  height: 10.getH(),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 16.h),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Fan:${widget.subjectModel.subjectName}',
+                                        style: AppTextStyle.interBold.copyWith(
+                                            color: AppColors.c_F2F2F2,
+                                            fontSize: 16.sp),
+                                      ),
+                                      SizedBox(
+                                        height: 7.getH(),
+                                      ),
+                                      Text(
+                                        "Qiyinlik darajasi: ${widget.subjectModel.level.name}",
+                                        style: AppTextStyle.interBold.copyWith(
+                                            color: AppColors.c_F2F2F2,
+                                            fontSize: 16.sp),
+                                      ),
+                                      SizedBox(
+                                        height: 9.getH(),
+                                      )
+                                    ],
                                   ),
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 16.h),
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Fan:${widget.subjectModel.subjectName}',
-                                          style: AppTextStyle.interBold.copyWith(
-                                              color: AppColors.c_F2F2F2,
-                                              fontSize: 16.sp),
-                                        ),
-                                        SizedBox(
-                                          height: 7.getH(),
-                                        ),
-                                        Text(
-                                          "Qiyinlik darajasi: ${widget.subjectModel.level.name}",
-                                          style: AppTextStyle.interBold.copyWith(
-                                              color: AppColors.c_F2F2F2,
-                                              fontSize: 16.sp),
-                                        ),
-                                        SizedBox(
-                                          height: 9.getH(),
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
+                                )
+                              ],
                             ),
-                            SizedBox(
-                              height: 15.getH(),
-                            ),
-                            RichText(
-                                text: TextSpan(
-                                    text: 'Savollar soni: ',
-                                    style: AppTextStyle.interRegular.copyWith(
-                                        color: AppColors.c_F2F2F2, fontSize: 17.sp),
-                                    children: [
-                                  TextSpan(
-                                      text: ' ${widget.subjectModel.questions.length} ta',
-                                      style: AppTextStyle.interBold.copyWith(
-                                          color: AppColors.c_F2F2F2,
-                                          fontSize: 17.sp))
-                                ])),
-                            SizedBox(
-                              height: 12.getH(),
-                            ),
-                            RichText(
-                                text: TextSpan(
-                                    text: 'Umumiy vaqt:',
-                                    style: AppTextStyle.interRegular.copyWith(
-                                        color: AppColors.c_F2F2F2, fontSize: 17.sp),
-                                    children: [
-                                  TextSpan(
-                                      text: ' ${getMinutelyText(widget.subjectModel.questions.length*120)}',
-                                      style: AppTextStyle.interBold.copyWith(
-                                          color: AppColors.c_F2F2F2,
-                                          fontSize: 17.sp))
-                                ])),
-                            SizedBox(
-                              height: 12.getH(),
-                            ),
-                            Text(
-                              'Yo\'riqnoma :',
-                              style: AppTextStyle.interBold.copyWith(
-                                  color: AppColors.c_F2F2F2, fontSize: 18.sp),
-                            ),
-                            Text(widget.subjectModel.description,style: AppTextStyle.interRegular.copyWith(
-                              color:AppColors.c_F2F2F2,fontSize: 17.sp
-                            ),)
-                          ],
-                        ),
+                          ),
+                          SizedBox(
+                            height: 15.getH(),
+                          ),
+                          RichText(
+                              text: TextSpan(
+                                  text: 'Savollar soni: ',
+                                  style: AppTextStyle.interRegular.copyWith(
+                                      color: AppColors.c_F2F2F2, fontSize: 17.sp),
+                                  children: [
+                                TextSpan(
+                                    text: ' ${widget.subjectModel.questions.length} ta',
+                                    style: AppTextStyle.interBold.copyWith(
+                                        color: AppColors.c_F2F2F2,
+                                        fontSize: 17.sp))
+                              ])),
+                          SizedBox(
+                            height: 12.getH(),
+                          ),
+                          RichText(
+                              text: TextSpan(
+                                  text: 'Umumiy vaqt:',
+                                  style: AppTextStyle.interRegular.copyWith(
+                                      color: AppColors.c_F2F2F2, fontSize: 17.sp),
+                                  children: [
+                                TextSpan(
+                                    text: ' ${getMinutelyText(widget.subjectModel.questions.length*120)}',
+                                    style: AppTextStyle.interBold.copyWith(
+                                        color: AppColors.c_F2F2F2,
+                                        fontSize: 17.sp))
+                              ])),
+                          SizedBox(
+                            height: 12.getH(),
+                          ),
+                          Text(
+                            'Yo\'riqnoma :',
+                            style: AppTextStyle.interBold.copyWith(
+                                color: AppColors.c_F2F2F2, fontSize: 18.sp),
+                          ),
+                          Text(widget.subjectModel.description,style: AppTextStyle.interRegular.copyWith(
+                            color:AppColors.c_F2F2F2,fontSize: 17.sp
+                          ),)
+                        ],
                       ),
                     )),
                 BottomContainer(
