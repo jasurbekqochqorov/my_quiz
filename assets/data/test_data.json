@@ -152,14 +152,14 @@
         },
         {
           "question_text": "Aksioma deb nimaga aytiladi?",
-          "true_answer": "sbot talab qilmaydigan jumla",
+          "true_answer": "Isbot talab qilmaydigan jumla",
           "variant_1": "Isbot talab qiladigan jumla",
           "variant_2": "Teoremaning teskarisi",
           "variant_3": "To’g’ri javob ko’rsatilmagan",
           "variant_4": "sbot talab qilmaydigan jumla"
         },
         {
-          "question_text": "g’ri burchakli uchburchakning perimetri 36 sm. Gipotenuzaning katetga nisbati 5:4.Uchburchak tomonlarini toping.?",
+          "question_text": "To'g’ri burchakli uchburchakning perimetri 36 sm. Gipotenuzaning katetga nisbati 5:4.Uchburchak tomonlarini toping.?",
           "true_answer": "11,2",
           "variant_1": "12,2",
           "variant_2": "11,2",
